@@ -83,7 +83,6 @@ const App = () => {
 
       {!isLoading && !isError && movies.length > 0 && (
         <>
-          <MovieGrid movies={movies} onSelect={(m: Movie) => setSelectedMovie(m)} />
           {totalPages > 1 && (
             <ReactPaginate
               pageCount={totalPages}
@@ -97,6 +96,7 @@ const App = () => {
               previousLabel="←"
             />
           )}
+          <MovieGrid movies={movies} onSelect={(m: Movie) => setSelectedMovie(m)} />
         </>
       )}
 
