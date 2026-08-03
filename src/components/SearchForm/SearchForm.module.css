@@ -1,0 +1,41 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(100%, 420px);
+}
+
+.label {
+  font-weight: 600;
+}
+
+.fieldGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #0a66c2;
+  box-shadow: 0 0 0 4px rgba(10, 102, 194, 0.12);
+}
+
+.button {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 18px;
+  background-color: #0a66c2;
+  color: white;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #084a99;
+}
