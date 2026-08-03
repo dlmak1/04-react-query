@@ -1,11 +1,10 @@
 import { useState, type ComponentType } from "react";
 import type { Movie } from "../../types/movie";
 import { Toaster } from "react-hot-toast";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import ReactPaginateModule from "react-paginate";
 import type { ReactPaginateProps } from "react-paginate";
-import { fetchMovies } from "../../services/movieService";
-import type { MoviesResponse } from "../../types/movie";
+import { fetchMovies, type MoviesResponse } from "../../services/movieService";
 import SearchBar from "../SearchBar/SearchBar";
 import MovieGrid from "../MovieGrid/MovieGrid";
 import MovieModal from "../MovieModal/MovieModal";
@@ -37,6 +36,7 @@ const App = () => {
     enabled: shouldFetch,
     staleTime: 1000 * 60 * 5,
     refetchOnWindowFocus: false,
+    placeholderData: keepPreviousData,
   });
 
   const handleSearchSubmit = (value: string) => {

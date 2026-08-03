@@ -7,9 +7,7 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ onSubmit }: SearchBarProps) => {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+  const handleAction = (formData: FormData) => {
     const query = (formData.get('query') as string | null)?.trim() ?? '';
 
     if (!query) {
@@ -18,6 +16,11 @@ const SearchBar = ({ onSubmit }: SearchBarProps) => {
     }
 
     onSubmit(query);
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    handleAction(new FormData(event.currentTarget));
   };
 
   return (
@@ -31,7 +34,7 @@ const SearchBar = ({ onSubmit }: SearchBarProps) => {
         >
           Powered by TMDB
         </a>
-        <form className={css.form} onSubmit={handleSubmit}>
+        <form className={css.form} action={handleAction as unknown as string} onSubmit={handleSubmit}>
           <input
             className={css.input}
             type="text"

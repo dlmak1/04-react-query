@@ -1,5 +1,21 @@
 import axios from "axios";
-import type { MoviesResponse } from "../types/movie";
+
+interface Movie {
+  id: number;
+  title: string;
+  overview: string;
+  poster_path: string | null;
+  backdrop_path: string | null;
+  release_date: string;
+  vote_average: number;
+}
+
+export interface MoviesResponse {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+}
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY?.trim();
 const API_TOKEN = import.meta.env.VITE_TMDB_TOKEN?.trim();
