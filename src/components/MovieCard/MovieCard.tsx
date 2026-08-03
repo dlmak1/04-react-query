@@ -14,23 +14,12 @@ const MovieCard = ({ movie }: MovieCardProps) => {
 
   return (
     <article className={css.card}>
-      <div className={css.posterWrapper}>
-        {poster ? (
-          <img className={css.poster} src={poster} alt={movie.title} />
-        ) : (
-          <div className={css.noPoster}>No image</div>
-        )}
-      </div>
-      <div className={css.content}>
-        <h2 className={css.title}>{movie.title}</h2>
-        <p className={css.meta}>
-          {movie.release_date || "Unknown release date"}
-        </p>
-        <p className={css.overview}>
-          {movie.overview || "No description available."}
-        </p>
-        <span className={css.rating}>{movie.vote_average.toFixed(1)}</span>
-      </div>
+      {poster ? (
+        <img className={css.image} src={poster} alt={movie.title} />
+      ) : (
+        <div className={css.image} />
+      )}
+      <h2 className={css.title}>{movie.title}</h2>
     </article>
   );
 };

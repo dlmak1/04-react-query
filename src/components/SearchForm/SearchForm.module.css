@@ -1,41 +1,56 @@
+.header {
+  padding: 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.link {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0a66c2;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #004182;
+  text-decoration: underline;
+}
+
 .form {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: min(100%, 420px);
-}
-
-.label {
-  font-weight: 600;
-}
-
-.fieldGroup {
-  display: flex;
-  gap: 10px;
+  gap: 8px;
+  flex-wrap: nowrap;
 }
 
 .input {
-  flex: 1;
-  padding: 12px 14px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  outline: none;
-}
-
-.input:focus {
-  border-color: #0a66c2;
-  box-shadow: 0 0 0 4px rgba(10, 102, 194, 0.12);
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 240px;
 }
 
 .button {
   border: none;
-  border-radius: 8px;
-  padding: 12px 18px;
+  border-radius: 4px;
+  padding: 10px 20px;
   background-color: #0a66c2;
   color: white;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: #084a99;
+  background-color: #004182;
 }

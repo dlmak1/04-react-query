@@ -7,11 +7,13 @@ interface MovieListProps {
 }
 
 const MovieList = ({ movies }: MovieListProps) => (
-  <section className={css.list}>
+  <ul className={css.grid}>
     {movies.map((movie) => (
-      <MovieCard key={movie.id} movie={movie} />
+      <li key={movie.id}>
+        <MovieCard movie={movie} />
+      </li>
     ))}
-  </section>
+  </ul>
 );
 
 export default MovieList;

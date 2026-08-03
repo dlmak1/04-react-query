@@ -1,36 +1,59 @@
-import type { ChangeEvent, FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import { toast } from "react-hot-toast";
 import css from "./SearchForm.module.css";
 
 interface SearchFormProps {
-  query: string;
-  onQueryChange: (value: string) => void;
-  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  onSubmit: (value: string) => void;
 }
 
-const SearchForm = ({ query, onQueryChange, onSubmit }: SearchFormProps) => {
+const SearchForm = ({ onSubmit }: SearchFormProps) => {
+  const [query, setQuery] = useState("");
+
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    onQueryChange(event.target.value);
+    setQuery(event.target.value);
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const trimmedQuery = query.trim();
+    if (!trimmedQuery) {
+      toast.error("Please enter your search query.");
+      return;
+    }
+
+    onSubmit(trimmedQuery);
   };
 
   return (
-    <form className={css.form} onSubmit={onSubmit}>
-      <label className={css.label} htmlFor="movie-search">
-        Search movies
-      </label>
-      <div className={css.fieldGroup}>
-        <input
-          id="movie-search"
-          className={css.input}
-          type="text"
-          placeholder="Type a movie title"
-          value={query}
-          onChange={handleInput}
-        />
-        <button className={css.button} type="submit">
-          Search
-        </button>
+    <header className={css.header}>
+      <div className={css.container}>
+        <a
+          className={css.link}
+          href="https://www.themoviedb.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by TMDB
+        </a>
+
+        <form className={css.form} onSubmit={handleSubmit}>
+          <input
+            className={css.input}
+            type="text"
+            name="query"
+            autoComplete="off"
+            placeholder="Search movies..."
+            autoFocus
+            value={query}
+            onChange={handleInput}
+          />
+          <button className={css.button} type="submit">
+            Search
+          </button>
+        </form>
       </div>
-    </form>
+    </header>
   );
 };
 
