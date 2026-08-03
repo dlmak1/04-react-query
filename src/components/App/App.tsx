@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import ReactPaginateModule from "react-paginate";
 import type { ReactPaginateProps } from "react-paginate";
-import { fetchMovies } from "../../api/movies";
+import { fetchMovies } from "../../services/movies";
 import type { MoviesResponse } from "../../types/movie";
 import SearchBar from "../SearchBar/SearchBar";
 import MovieGrid from "../MovieGrid/MovieGrid";
@@ -96,7 +96,10 @@ const App = () => {
               previousLabel="←"
             />
           )}
-          <MovieGrid movies={movies} onSelect={(m: Movie) => setSelectedMovie(m)} />
+          <MovieGrid
+            movies={movies}
+            onSelect={(m: Movie) => setSelectedMovie(m)}
+          />
         </>
       )}
 
@@ -104,7 +107,10 @@ const App = () => {
         <p className={css.fetching}>Refreshing results…</p>
       )}
       {selectedMovie && (
-        <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)} />
+        <MovieModal
+          movie={selectedMovie}
+          onClose={() => setSelectedMovie(null)}
+        />
       )}
     </main>
   );
